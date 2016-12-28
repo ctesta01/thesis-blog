@@ -144,11 +144,11 @@ class SatoTate:
         else:
             n = int(L_norm)   # usually n = 2.
             def h(T):
-                return (X(T) - Y(T))^n
+                return (X(T) - Y(T))**n
             val, err = integral_numerical(h, a, b, max_points=max_points, 
               algorithm='qag', rule=1,eps_abs=1e-10, eps_rel=1e-10)
-            val = float(val^(1.0/n)) # compute L_n norm.
-            err = float(err^(1.0/n))
+            val = float(val**(1.0/n)) # compute L_n norm.
+            err = float(err**(1.0/n))
     
         self._delta[key] = (val, err)
         return val, err
@@ -229,7 +229,7 @@ print 'Loading function f(x) = 2/pi * sqrt(1-x^2)), the Sato Tate semi-circle'
 def f(x):
     if abs(x) == 1 or x < -1:
         return 0
-    return (2/math.pi) * sqrt(1-x^2)
+    return (2/math.pi) * sqrt(1-x**2)
 
 print 'Loading function sin2acos, which graphs f(x)'
 def sin2acos():
