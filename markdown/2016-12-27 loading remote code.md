@@ -33,6 +33,25 @@ And then to load some data I do something like this:
 cm_curves_download_path = os.path.join(os.path.expanduser('~'), 'Downloads', 'cm-curves.sage')
 cm_curves_http_source = 'https://raw.githubusercontent.com/ctesta01/thesis-blog/master/code/cm-curves.sage'
 download_and_exec(cm_curves_download_path, cm_curves_http_source)
+# Loading return_cm_curves()
+# retrieve CM curves by running
+# cm_curves = return_cm_curves()
+
+cm_curves = return_cm_curves()
+E = EllipticCurve(cm_curves[0])
 ```
 
-After doing this, I can run `cm_curves = return_cm_curves(); E = EllipticCurve(cm_curves[0])` and now `E` is the elliptic curve $y^2 + y = x^3 - 2174420*x + 1234136692$ with complex multiplication.
+Now `E` the elliptic curve $y^2 + y = x^3 - 2174420*x + 1234136692$ with complex multiplication, and `cm_curves` is the `ainvs` (a invariants) list of a bunch of CM curves.
+
+This is a nice way of carrying around a list of 5128 lines of coefficients for curves with complex multiplication,
+but really what I'm interested in this for is storing functions. I suppose I could be building actual
+python modules, but I know nothing about that so far, and this is effective enough to make me happy.
+
+The last thing I've done today is wrapping up some work I've been doing on making data
+on families of elliptic curves into a function. This is contained in my `code/sato-tate-convergence.sage`
+file, and I want to make it clear that the vast majority of the work done in that file
+(as with everything in sage) was done by William Stein. The function `saving_ec_plots_and_data()` allows
+me to save for a list of elliptic curves a whole bunch of data at once, and I intend to use it
+to study families of large rank.
+
+Thanks for reading ☕️

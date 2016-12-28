@@ -1,18 +1,18 @@
 # Christian Testa
 # December 27 2016
 
-# Sato Tate Convergence Plotting 
+# Sato Tate Convergence Plotting
 
 # This file is a set of functions, most of which are William Stein's, which create graphs
-# and plots of data related to the convergence of Sato Tate distributions. The goal 
-# of this file is to enable users to create this data for a list of elliptic curves, 
+# and plots of data related to the convergence of Sato Tate distributions. The goal
+# of this file is to enable users to create this data for a list of elliptic curves,
 # with the prime example in mind being families of elliptic curves of high rank.
 
 # At the end of this file is a function of my own: saving_ec_plots_and_data()
 # This function automates producing Sato Tate, Akiyama-Tanigawa, QQ, and modular forms plots,
 # and produces them for a list of elliptic curves. Further, it provides some optional parameters
-# which allow you to set the number of $a_n$ terms that you would like to calculate, and the 
-# length of time after which the rank calculation will time out. 
+# which allow you to set the number of $a_n$ terms that you would like to calculate, and the
+# length of time after which the rank calculation will time out.
 
 # Example Usage:
 # E_list = [(0, 0, 1, -2174420, 1234136692),
@@ -36,17 +36,17 @@
 print 'Loading method dist \n\t creates a list of bins and sorts data for a histogram'
 def dist(v, b, left=-1.0, right=1.0):
     """
-    We divide the interval between left (default: 0) and 
+    We divide the interval between left (default: 0) and
     right (default: pi) up into b bins.
-   
-    For each number in v (which must left and right), 
+
+    For each number in v (which must left and right),
     we find which bin it lies in and add this to a counter.
     This function then returns the bins and the number of
-    elements of v that lie in each one. 
+    elements of v that lie in each one.
 
-    ALGORITHM: To find the index of the bin that a given 
-    number x lies in, we multiply x by b/length and take the 
-    floor. 
+    ALGORITHM: To find the index of the bin that a given
+    number x lies in, we multiply x by b/length and take the
+    floor.
     """
     length = right - left
     normalize = float(b/length)
@@ -74,7 +74,7 @@ import bisect
 print 'Loading class SatoTate \n\t stores methods and information about Sato Tate distributions for an elliptic curve'
 class SatoTate:
     def __init__(self, E, n):
-        self._E = E    
+        self._E = E
         self._n = n
         self.init_aplist(n)
 
@@ -89,9 +89,9 @@ class SatoTate:
         self._normalized_aplist = [float(v[i])/(two*math.sqrt(P[i])) for i in range(len(v))]
         print 'time to normalize ', cputime(t)
 
-    def __repr__(self): 
+    def __repr__(self):
         return "Sato-Tate data for %s using primes up to %s"%(self._E, self._n)
- 
+
     def normalized_aplist(self, n):  # returns a copy
         k = prime_pi(n)
         v = self._normalized_aplist
@@ -106,7 +106,7 @@ class SatoTate:
 
     def YCab(self, Cmax, a=-1, b=1):
         v = self.sorted_aplist(Cmax)
-    
+
         denom = bisect.bisect_right(v, float(b)) - bisect.bisect_left(v, float(a))
         try:
            normalize = float(1)/denom
@@ -143,15 +143,15 @@ class SatoTate:
         pl = parametric_plot((X, Y), a,b)
         ll = line([(0,0), (1.1,1.1)], rgbcolor=(1,0,0))
         return pl+ll
- 
+
     def Delta(self, C, a, b, max_points=300, L_norm=2):
         """
         Delta_{a}^{b} function:
 
         INPUT: C - cutoff
              a,b - evaluate over the interval (a,b)
-             max_points - number of points used in numerical integral         
-             L_norm --the integer n=2 or n=oo. 
+             max_points - number of points used in numerical integral
+             L_norm --the integer n=2 or n=oo.
                       Compute the L_n norm.   For n finite this
                       is the integral of the difference to the power n.
                       For n = +oo, this is the L_oo norm, which is the max
@@ -175,11 +175,11 @@ class SatoTate:
             n = int(L_norm)   # usually n = 2.
             def h(T):
                 return (X(T) - Y(T))**n
-            val, err = integral_numerical(h, a, b, max_points=max_points, 
+            val, err = integral_numerical(h, a, b, max_points=max_points,
               algorithm='qag', rule=1,eps_abs=1e-10, eps_rel=1e-10)
             val = float(val**(1.0/n)) # compute L_n norm.
             err = float(err**(1.0/n))
-    
+
         self._delta[key] = (val, err)
         return val, err
 
@@ -191,7 +191,7 @@ class SatoTate:
         val, err = self.Delta(C, a, b, max_points=max_points, L_norm=L_norm)
         return -log(val-abs(err))/log(C), -log(val+abs(err))/log(C)
 
-    def compute_theta(self, Cmax, plot_points=30, a=-1, b=1, 
+    def compute_theta(self, Cmax, plot_points=30, a=-1, b=1,
                  max_points=300, L_norm=2, verbose=False):
         a,b = (float(a), float(b))
         def f(C):
@@ -200,7 +200,7 @@ class SatoTate:
            return z[0]
         return [(x,f(x)) for x in range(100, Cmax, int(Cmax/plot_points))]
 
-    def compute_theta_interval(self, Cmax, plot_points=30, a=-1, b=1, 
+    def compute_theta_interval(self, Cmax, plot_points=30, a=-1, b=1,
                 max_points=300, L_norm=2, verbose=False):
         a,b = (float(a), float(b))
         vmin = []; vmax = []
@@ -239,8 +239,8 @@ def graph(d, b, num=5000, left=float(0), right=float(pi)):
     k = 0
     for i, n in d.iteritems():
         k += n
-        # ith bin has n objects in it. 
-        s += polygon([(w*i+left,0), (w*(i+1)+left,0), 
+        # ith bin has n objects in it.
+        s += polygon([(w*i+left,0), (w*(i+1)+left,0),
                      (w*(i+1)+left, n/(num*w)), (w*i+left, n/(num*w))],
                      rgbcolor=(0,0,0.5))
     return s
@@ -270,42 +270,46 @@ def sin2acos():
 
 print 'Loading function saving_ec_plots_and_data \n\t save Sato Tate, Akiyama-Tanigawa, QQ, and modular form plots for a list of curves'
 def saving_ec_plots_and_data(curve_list, output_path, time_limit=5, an_limit=10^4):
-    
-    # change directories 
-    import os 
+
+    # change directories
+    import os
     os.chdir(output_path)
 
     # this is a plot of the sato-tate semicircle
     h = plot(sin2acos())
-    
+
     @fork(timeout=time_limit)
     def timed_rank(E):
         return E.rank()
-        
+
     for i in range(1,len(curve_list)):
-        try: 
+        try:
                 # pick next curve
             E = curve_list[i]
-    
-                # make akiyama-tanigawa plot 
+
+                # plot the curve
+            e = E.plot()
+            e.save(str(i) + '_elliptic_curve_plot.png')
+
+                # make akiyama-tanigawa plot
             S = SatoTate(E, an_limit)
             P = S.plot_theta_interval(an_limit, plot_points=200, max_points=10, L_norm=2)
             P.save_image(str(i) + '_akiyama_tanigawa.png')
-    
+
                 # make sato-tate distribution graph
             g = graph_ellcurve_noacos(E, 200, an_limit)
             if not E.has_cm():
                 g = g + h
             g.set_axes_range(-1,1,0,2)
             g.save_image(str(i) + '_sato_tate.png')
-    
+
                 # make qqplot
             S.qqplot(an_limit).save_image(str(i) + '_qqplot.png')
-            
+
                 # make modular form
             f = E.q_eigenform(100).truncate()
-            (circle((0,0),1) + complex_plot(f,(-1,1),(-1,1))).save(str(i) + '_modform.png', axes=False) 
-    
+            (circle((0,0),1) + complex_plot(f,(-1,1),(-1,1))).save(str(i) + '_modform.png', axes=False)
+
                 # write curve details to corresponding file
             f = open(str(i) + '.txt', 'w+')
             print>>f, E
@@ -319,6 +323,5 @@ def saving_ec_plots_and_data(curve_list, output_path, time_limit=5, an_limit=10^
             print>>f, 'anlist to ' + str(S._n) + ':\n'
             print>>f, S._normalized_aplist
             f.close()
-        except: 
+        except:
             pass
-    
