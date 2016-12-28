@@ -3,10 +3,11 @@
 # Below is a list called data. Each entry has the form:
 #   [Weierstrass Coefficients]
 
-print 'Loading complex_multiplication_curves'
+print 'retrieve CM curves by running'
+print 'cm_curves = return_cm_curves()'
 
 def return_cm_curves():
-return data = [\
+    return [\
     [0, 0, 1, -2174420, 1234136692],\
     [0, 0, 1, -57772164980, -5344733777551611],\
     [0, 0, 1, -19569780, -33321690691],\
