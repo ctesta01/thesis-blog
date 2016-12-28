@@ -1,10 +1,14 @@
 # Christian Testa
 # December 27 2016
 
+# Sato Tate Convergence Plotting 
 
+# This file is a set of functions, most of which are William Stein's, which create graphs
+# and plots of data related to the convergence of Sato Tate distributions. The goal 
+# of this file is to enable users to create this data for a list of elliptic curves, 
+# with the prime example in mind being families of elliptic curves of high rank.
 
 # At the end of this file is a function of my own: saving_ec_plots_and_data()
-
 # This function automates producing Sato Tate, Akiyama-Tanigawa, QQ, and modular forms plots,
 # and produces them for a list of elliptic curves. Further, it provides some optional parameters
 # which allow you to set the number of $a_n$ terms that you would like to calculate, and the 
@@ -24,12 +28,10 @@
 # E_list = [EllipticCurve(E_list[i]) for i in range(0, len(E_list))]
 # saving_ec_plots_and_data(E_list, '~/Documents/sato-tate-distributions/some-complex-multiplication-curves')
 
-
 # The immediately following code (~233 lines) is copied with minor changes from William Stein's code here:
 
 #       - http://wstein.org/mazur/sato.tate.figures/
 #       - http://wstein.org/talks/20071016-convergence/
-
 
 print 'Loading method dist \n\t creates a list of bins and sorts data for a histogram'
 def dist(v, b, left=-1.0, right=1.0):
@@ -58,13 +60,13 @@ def dist(v, b, left=-1.0, right=1.0):
 from math import asin, log, sqrt
 
 def redline(xmin,xmax):
-    return line([(xmin,1/2),(xmax,1/2)], rgbcolor=(1,0,0))
+    return line([(xmin,0.5),(xmax,0.5)], rgbcolor=(1,0,0))
 
 def Xab(a,b):
-    bb = (asin(b)/2 + b*sqrt(1-b^2)/2)
-    aa = (asin(a)/2 + a*sqrt(1-a^2)/2)
+    bb = (asin(b)/2 + b*sqrt(1-b**2)/2)
+    aa = (asin(a)/2 + a*sqrt(1-a**2)/2)
     def X(T):
-        return (asin(T)/2 + T*sqrt(1-T^2)/2 - aa)/(bb - aa)
+        return (asin(T)/2 + T*sqrt(1-T**2)/2 - aa)/(bb - aa)
     return X
 
 import bisect
@@ -172,11 +174,11 @@ class SatoTate:
         else:
             n = int(L_norm)   # usually n = 2.
             def h(T):
-                return (X(T) - Y(T))^n
+                return (X(T) - Y(T))**n
             val, err = integral_numerical(h, a, b, max_points=max_points, 
               algorithm='qag', rule=1,eps_abs=1e-10, eps_rel=1e-10)
-            val = float(val^(1.0/n)) # compute L_n norm.
-            err = float(err^(1.0/n))
+            val = float(val**(1.0/n)) # compute L_n norm.
+            err = float(err**(1.0/n))
     
         self._delta[key] = (val, err)
         return val, err
@@ -257,7 +259,7 @@ print 'Loading function f(x) \n\t = 2/pi * sqrt(1-x^2)), the Sato Tate semi-circ
 def f(x):
     if abs(x) == 1 or x < -1:
         return 0
-    return (2/math.pi) * sqrt(1-x^2)
+    return (2/math.pi) * sqrt(1-x**2)
 
 print 'Loading function sin2acos \n\t which graphs f(x)'
 def sin2acos():
