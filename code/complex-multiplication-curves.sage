@@ -3,8 +3,9 @@
 # Below is a list called data. Each entry has the form:
 #   [Weierstrass Coefficients]
 
+print 'Loading complex_multiplication_curves'
 
-data = [\
+complex_multiplication_curves = [\
 [0, 0, 1, -2174420, 1234136692],\
 [0, 0, 1, -57772164980, -5344733777551611],\
 [0, 0, 1, -19569780, -33321690691],\
