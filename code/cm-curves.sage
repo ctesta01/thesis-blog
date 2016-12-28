@@ -3,6 +3,7 @@
 # Below is a list called data. Each entry has the form:
 #   [Weierstrass Coefficients]
 
+print 'Loading return_cm_curves()'
 print 'retrieve CM curves by running'
 print 'cm_curves = return_cm_curves()'
 
