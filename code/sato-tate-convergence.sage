@@ -3,7 +3,7 @@
 #       - http://wstein.org/mazur/sato.tate.figures/
 #       - http://wstein.org/talks/20071016-convergence/
 
-print 'Loading method dist which creates a list of bins and sorts data for a histogram'
+print 'Loading method dist \n\t creates a list of bins and sorts data for a histogram'
 def dist(v, b, left=-1.0, right=1.0):
     """
     We divide the interval between left (default: 0) and 
@@ -41,7 +41,7 @@ def Xab(a,b):
 
 import bisect
 
-print 'Loading class SatoTate which stores methods and information about Sato Tate distributions for an elliptic curve'
+print 'Loading class SatoTate \n\t stores methods and information about Sato Tate distributions for an elliptic curve'
 class SatoTate:
     def __init__(self, E, n):
         self._E = E    
@@ -196,11 +196,11 @@ class SatoTate:
     def x_times_Delta(self, x):
         return x*self.Delta(x, -1,1, max_points=500)[0]
 
-print 'Loading method showtheta for plotting the Akiyama-Tanigawa conjecture data constructed in the SatoTate class'
+print 'Loading method showtheta \n\t plotting the Akiyama-Tanigawa conjecture data constructed in the SatoTate class'
 def showtheta(P):
     P.show(xmin=0, ymin=0, ymax=0.6, figsize=[9,4])
 
-print 'Loading method graph for creating a histogram graphic out of the output of graph'
+print 'Loading method graph \n\t creating a histogram graphic out of the output of graph'
 def graph(d, b, num=5000, left=float(0), right=float(pi)):
     s = Graphics()
     left = float(left); right = float(right)
@@ -215,11 +215,11 @@ def graph(d, b, num=5000, left=float(0), right=float(pi)):
                      rgbcolor=(0,0,0.5))
     return s
 
-print 'Loading function sato_tate_noacos for creating a normalized aplist'
+print 'Loading function sato_tate_noacos \n\t creating a normalized aplist'
 def sato_tate_noacos(E, N):
     return [E.ap(p)/(2*math.sqrt(p)) for p in prime_range(N+1) if N%p != 0]
 
-print 'Loading function graph_ellcurve_noacos for histogramming an aplist'
+print 'Loading function graph_ellcurve_noacos \n\t histogramming an aplist'
 def graph_ellcurve_noacos(E, b=10, num=5000):
     v = sato_tate_noacos(E, num)
     d, total_number_of_points = dist(v,b,-1,1)
