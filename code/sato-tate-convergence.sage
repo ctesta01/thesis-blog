@@ -3,6 +3,9 @@
 #       - http://wstein.org/mazur/sato.tate.figures/
 #       - http://wstein.org/talks/20071016-convergence/
 
+# Following that is a function of my own, 
+# 
+
 print 'Loading method dist \n\t creates a list of bins and sorts data for a histogram'
 def dist(v, b, left=-1.0, right=1.0):
     """
@@ -225,16 +228,70 @@ def graph_ellcurve_noacos(E, b=10, num=5000):
     d, total_number_of_points = dist(v,b,-1,1)
     return graph(d, b, total_number_of_points,-1,1)
 
-print 'Loading function f(x) = 2/pi * sqrt(1-x^2)), the Sato Tate semi-circle'
+print 'Loading function f(x) \n\t = 2/pi * sqrt(1-x^2)), the Sato Tate semi-circle'
 def f(x):
     if abs(x) == 1 or x < -1:
         return 0
     return (2/math.pi) * sqrt(1-x^2)
 
-print 'Loading function sin2acos, which graphs f(x)'
+print 'Loading function sin2acos \n\t which graphs f(x)'
 def sin2acos():
     PI = float(pi)
     return plot(f, -1.01,1, plot_points=200, \
               rgbcolor=(1,0,0), thickness=4,alpha=0.7)
 
 
+print 'Loading function saving_ec_plots_and_data \n\t save Sato Tate, Akiyama-Tanigawa, QQ, and modular form plots for a list of curves'
+def saving_ec_plots_and_data(curve_list, output_path, time_limit=5, an_limit=10^4):
+    
+    # change directories 
+    import os 
+    os.chdir(output_path)
+
+    # this is a plot of the sato-tate semicircle
+    h = plot(sin2acos())
+    
+    @fork(timeout=time_limit)
+    def timed_rank(E):
+        return E.rank()
+        
+    for i in range(1,len(curve_list)):
+        try: 
+                # pick next curve
+            E = curve_list[i]
+    
+                # make akiyama-tanigawa plot 
+            S = SatoTate(E, an_limit)
+            P = S.plot_theta_interval(an_limit, plot_points=200, max_points=10, L_norm=2)
+            P.save_image(str(i) + '_akiyama_tanigawa.png')
+    
+                # make sato-tate distribution graph
+            g = graph_ellcurve_noacos(E, 200, an_limit)
+            if not E.has_cm():
+                g = g + h
+            g.set_axes_range(-1,1,0,2)
+            g.save_image(str(i) + '_sato_tate.png')
+    
+                # make qqplot
+            S.qqplot(an_limit).save_image(str(i) + '_qqplot.png')
+            
+                # make modular form
+            f = E.q_eigenform(100).truncate()
+            (circle((0,0),1) + complex_plot(f,(-1,1),(-1,1))).save(str(i) + '_modform.png', axes=False) 
+    
+                # write curve details to corresponding file
+            f = open(str(i) + '.txt', 'w+')
+            print>>f, E
+            print>>f, '\n'
+            print>>f, 'E = EllipticCurve(' + str(E.ainvs()) +') \n'
+            print>>f, 'Has CM: ' + str(E.has_cm()) + '\n'
+            print>>f, 'Rank: ' + str(timed_rank(E)) + '\n'
+            print>>f, 'J invariant: ' + str(E.j_invariant()) + '\n'
+            print>>f, 'Conductor: ' + str(E.conductor()) + '\n'
+            print>>f, str(E.torsion_subgroup()) + '\n'
+            print>>f, 'anlist to ' + str(S._n) + ':\n'
+            print>>f, S._normalized_aplist
+            f.close()
+        except: 
+            pass
+    
