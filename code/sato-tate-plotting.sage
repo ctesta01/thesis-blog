@@ -3,7 +3,7 @@
 #       - http://wstein.org/mazur/sato.tate.figures/
 #       - http://wstein.org/talks/20071016-convergence/
 
-def dist(v, b, left=-1.0r, right=1.0r):
+def dist(v, b, left=-1.0, right=1.0):
     """
     We divide the interval between left (default: 0) and 
     right (default: pi) up into b bins.
