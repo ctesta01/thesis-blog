@@ -30,7 +30,7 @@ def dist(v, b, left=-1.0, right=1.0):
 from math import asin, log, sqrt
 
 def redline(xmin,xmax):
-    return line([(xmin,1/2),(xmax,1/2)], rgbcolor=(1,0,0))
+    return line([(xmin,0.5),(xmax,0.5)], rgbcolor=(1,0,0))
 
 def Xab(a,b):
     bb = (asin(b)/2 + b*sqrt(1-b**2)/2)
