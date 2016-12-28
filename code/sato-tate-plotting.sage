@@ -32,10 +32,10 @@ def redline(xmin,xmax):
     return line([(xmin,1/2),(xmax,1/2)], rgbcolor=(1,0,0))
 
 def Xab(a,b):
-    bb = (asin(b)/2r + b*sqrt(1r-b^2r)/2r)
-    aa = (asin(a)/2r + a*sqrt(1r-a^2r)/2r)
+    bb = (asin(b)/2 + b*sqrt(1-b^2)/2)
+    aa = (asin(a)/2 + a*sqrt(1-a^2)/2)
     def X(T):
-        return (asin(T)/2r + T*sqrt(1r-T^2r)/2r - aa)/(bb - aa)
+        return (asin(T)/2 + T*sqrt(1-T^2)/2 - aa)/(bb - aa)
     return X
 
 import bisect
@@ -80,7 +80,7 @@ class SatoTate:
            normalize = float(1)/denom
         except:
            def Y(T):
-               return 1.0r
+               return 1.0
            return Y
         start_pos = bisect.bisect_left(v, float(a))
 
