@@ -1,10 +1,35 @@
-# The following code (~233 lines) is copied with minor changes from William Stein's code here:
+# Christian Testa
+# December 27 2016
+
+
+
+# At the end of this file is a function of my own: saving_ec_plots_and_data()
+
+# This function automates producing Sato Tate, Akiyama-Tanigawa, QQ, and modular forms plots,
+# and produces them for a list of elliptic curves. Further, it provides some optional parameters
+# which allow you to set the number of $a_n$ terms that you would like to calculate, and the 
+# length of time after which the rank calculation will time out. 
+
+# Example Usage:
+# E_list = [(0, 0, 1, -2174420, 1234136692),
+#  (0, 0, 1, -57772164980, -5344733777551611),
+#  (0, 0, 1, -19569780, -33321690691),
+#  (0, 0, 1, -519949484820, 144307811993893490),
+#  (0, 0, 1, -33083930, -73244287055),
+#  (0, 0, 1, -7370, 243528),
+#  (0, 0, 1, -297755370, 1977595750478),
+#  (0, 0, 1, -66330, -6575263),
+#  (0, 0, 0, -117920, -15585808),
+#  (0, 0, 0, -529342880, 4687634371504)]
+# E_list = [EllipticCurve(E_list[i]) for i in range(0, len(E_list))]
+# saving_ec_plots_and_data(E_list, '~/Documents/sato-tate-distributions/some-complex-multiplication-curves')
+
+
+# The immediately following code (~233 lines) is copied with minor changes from William Stein's code here:
 
 #       - http://wstein.org/mazur/sato.tate.figures/
 #       - http://wstein.org/talks/20071016-convergence/
 
-# Following that is a function of my own, 
-# 
 
 print 'Loading method dist \n\t creates a list of bins and sorts data for a histogram'
 def dist(v, b, left=-1.0, right=1.0):
