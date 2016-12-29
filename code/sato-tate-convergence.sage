@@ -282,6 +282,10 @@ def saving_ec_plots_and_data(curve_list, output_path, time_limit=5, an_limit=10^
     def timed_rank(E):
         return E.rank()
 
+    @fork(timeout=time_limit)
+    def timed_rank_bound(E):
+        return E.analytic_rank_upper_bound()
+
     for i in range(1,len(curve_list)):
         try:
                 # pick next curve
@@ -317,6 +321,7 @@ def saving_ec_plots_and_data(curve_list, output_path, time_limit=5, an_limit=10^
             print>>f, 'E = EllipticCurve(' + str(E.ainvs()) +') \n'
             print>>f, 'Has CM: ' + str(E.has_cm()) + '\n'
             print>>f, 'Rank: ' + str(timed_rank(E)) + '\n'
+            print>>f, 'Analytic Rank Upper Bound: ' + str(timed_rank_bound(E)) + '\n'
             print>>f, 'J invariant: ' + str(E.j_invariant()) + '\n'
             print>>f, 'Conductor: ' + str(E.conductor()) + '\n'
             print>>f, str(E.torsion_subgroup()) + '\n'
