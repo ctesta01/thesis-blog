@@ -9,4 +9,6 @@ playing with elliptic curves. I have a couple projects that I've been working on
 - [Subgroup Structure in $\mathbb F_p$]()
 - [Geometrically Understanding the $a$-invariants]()
 
+
+
 ![A spherical projection of Elliptic Curve 37a1](https://github.com/ctesta01/thesis-blog/blob/master/images/Spherical%2037a1%20Spinning.gif?raw=true)
