@@ -6,8 +6,8 @@ I'm writing a thesis on elliptic curves. I do a lot of exploring, plotting, and
 playing with elliptic curves. I have a couple projects that I've been working on recently. 
 
 - [Spherically Projecting Elliptic Curves]()
-- [Subgroup Structure in $\mathbb F_p$]()
-- [Geometrically Understanding the $a$-invariants]()
+- [Subgroup Structure in F_p]()
+- [Geometrically Understanding the a-invariants]()
 
 <p> </p>
 
