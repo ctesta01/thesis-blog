@@ -9,7 +9,7 @@ I have a couple projects that I've been working on recently.
 - [Geometrically Understanding the $a$-invariants]()
 
 <center>
-<img src='https://github.com/ctesta01/thesis-blog/blob/master/images/Spherical%2037a1%20Spinning.gif?raw=true'>
+![A spherical projection of Elliptic Curve 37a1](https://github.com/ctesta01/thesis-blog/blob/master/images/Spherical%2037a1%20Spinning.gif?raw=true)
 </center>
 
-![A spherical projection of Elliptic Curve 37a1](https://fat.gfycat.com/TediousMajorHawk.gif)
+<div style="text-align:center"><img src ="https://github.com/ctesta01/thesis-blog/blob/master/images/Spherical%2037a1%20Spinning.gif?raw=true" /></div>
