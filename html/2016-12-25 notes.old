@@ -2,7 +2,7 @@
 <html>
   <head>
       <meta charset="utf-8" />
-      <title>2016-12-25 limit execution time</title>
+      <title>notes-2016-12-25</title>
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     jax: ["input/TeX","output/HTML-CSS"],
@@ -521,12 +521,11 @@ pre.editor-colors .fold-marker:after,
 }
 </style>
   </head>
-  <body class='markdown-preview' data-use-github-style><h2>Limit Execution Time</h2>
-<p>Sweet. This makes things much easier.</p>
-<p>This is what works:</p>
-<pre class="editor-colors lang-python"><div class="line"><span class="source python"><span class="meta function decorator python"><span class="entity name function decorator python"><span>@</span><span>fork</span></span><span class="punctuation definition arguments begin python"><span>(</span></span><span class="meta function decorator arguments python"><span class="variable parameter function python"><span>timeout</span></span><span class="keyword operator assignment python"><span>=</span></span><span class="constant numeric integer decimal python"><span>5</span></span></span><span class="punctuation definition arguments end python"><span>)</span></span></span></span></div><div class="line"><span class="source python"><span class="meta function python"><span class="storage type function python"><span>def</span></span><span>&nbsp;</span><span class="entity name function python"><span>timed_rank</span></span><span class="punctuation definition parameters begin python"><span>(</span></span><span class="meta function parameters python"><span class="variable parameter function python"><span>E</span></span></span><span class="punctuation definition parameters end python"><span>)</span></span><span class="punctuation section function begin python"><span>:</span></span></span></span></div><div class="line"><span class="source python"><span>&nbsp;&nbsp;</span><span class="keyword control statement python"><span>return</span></span><span>&nbsp;</span><span class="meta function-call python"><span>E</span><span>.</span><span>rank</span><span class="punctuation definition arguments begin python"><span>(</span></span><span class="punctuation definition arguments end python"><span>)</span></span></span></span></div><div class="line"><span class="source python"><span>&nbsp;</span></span></div><div class="line"><span class="source python"><span>E</span><span>&nbsp;</span><span class="keyword operator assignment python"><span>=</span></span><span>&nbsp;</span><span class="meta function-call python"><span>EllipticCurve</span><span class="punctuation definition arguments begin python"><span>(</span></span><span class="meta function-call arguments python"><span class="meta structure list python"><span class="punctuation definition list begin python"><span>[</span></span><span>&nbsp;</span><span class="meta structure list item python"><span class="keyword operator arithmetic python"><span>-</span></span><span class="constant numeric integer decimal python"><span>1</span></span><span class="keyword operator arithmetic python"><span>/</span></span><span class="constant numeric integer decimal python"><span>36</span></span></span><span class="punctuation separator list python"><span>,</span></span><span>&nbsp;</span><span class="meta structure list item python"><span class="keyword operator arithmetic python"><span>-</span></span><span class="constant numeric integer decimal python"><span>1</span></span><span class="keyword operator arithmetic python"><span>/</span></span><span class="constant numeric integer decimal python"><span>36</span></span></span><span class="punctuation separator list python"><span>,</span></span><span>&nbsp;</span><span class="meta structure list item python"><span class="constant numeric integer decimal python"><span>0</span></span></span><span class="punctuation separator list python"><span>,</span></span><span>&nbsp;</span><span class="meta structure list item python"><span class="keyword operator arithmetic python"><span>-</span></span><span class="constant numeric integer decimal python"><span>1</span></span></span><span class="punctuation separator list python"><span>,</span></span><span>&nbsp;</span><span class="meta structure list item python"><span class="constant numeric integer decimal python"><span>1</span></span></span><span>&nbsp;</span><span class="punctuation definition list end python"><span>]</span></span></span></span><span class="punctuation definition arguments end python"><span>)</span></span></span></span></div><div class="line"><span class="source python"><span class="meta function-call python"><span>timed_rank</span><span class="punctuation definition arguments begin python"><span>(</span></span><span class="meta function-call arguments python"><span>E</span></span><span class="punctuation definition arguments end python"><span>)</span></span></span></span></div><div class="line"><span class="source python"><span class="comment line number-sign python"><span class="punctuation definition comment python"><span>#</span></span><span>&nbsp;&#39;NO&nbsp;DATA&nbsp;(timed&nbsp;out)&#39;</span><span>&nbsp;</span></span></span></div></pre>
+  <body class='markdown-preview' data-use-github-style><h2>Question about Sagemath</h2>
+<p>I’m putting this here, because I haven’t been able to post it on ask.Sagemath
+and I’m waiting for the google group sage-nt to admit me (maybe)?</p>
 <hr>
-<p>I’ve tried a bunch of different methods for trying to limit the amount of time sage takes to calculate the rank of an elliptic curve. This is an example that takes a long time to compute:</p>
+<p>I’ve tried a couple different methods for trying to limit the amount of time sage takes to calculate the rank of an elliptic curve. This is an example that takes a long time to compute:</p>
 <pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>E&nbsp;=&nbsp;EllipticCurve([&nbsp;-1/36,&nbsp;-1/36,&nbsp;0,&nbsp;-1,&nbsp;1&nbsp;])</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>E.rank()</span></span></span></div></pre>
 <p>I’ve tried suggestions from</p>
 <ul>
@@ -534,38 +533,7 @@ pre.editor-colors .fold-marker:after,
 <li><a href="http://stackoverflow.com/a/601168/3161979">stackoverflow post 2</a></li>
 <li><a href="https://www.filosophy.org/post/32/python_function_execution_deadlines__in_simple_examples/">filosophy blog post</a></li>
 </ul>
-<p>So I posted around looking for advice.</p>
-<p>…</p>
-<p><a href="https://groups.google.com/forum/#!topic/sage-nt/rjurh63gV2k">William Stein responded to me on the sage-nt google group!</a></p>
-<p>His response:</p>
-<blockquote>
-<p>Use either “alarm” or “fork”, both of which are built into Sage.
-We’ve had to properly solve exactly the problems you’ve run into a
-decade ago already (with many iterations since), and make those
-solutions work in the context of the very complicated Sage library
-(which involves C libraries, external processes, etc.).</p>
-</blockquote>
-<blockquote>
-<p>Type “alarm?” or “fork?” or google the sagemath docs.</p>
-</blockquote>
-<blockquote>
-<p>--
-William (<a href="http://wstein.org">http://wstein.org</a>)</p>
-</blockquote>
-<p>He went on to say that the <code>@fork</code> solution is much more reliable, because it creates a separate thread which cannot be interfered with.</p>
-<blockquote>
-<p>If you can use fork, it will be vastly more robust, due to how it
-works.   Under the hood it makes an exact copy of your running
-process, does the work in the copy process, then gets the output (as a
-string via pickle), and kills that subprocess.  There is (basically)
-no possibility of memory leaks, and even segfaults or other horrible
-behavior will not kill your parent process.   The drawback is that it
-can take slightly longer to run, only output that is relatively small
-and pickleable can be returned, and pexpect interfaces lose their
-state.</p>
-</blockquote>
-<blockquote>
-<p>William</p>
-</blockquote>
-<p>Sweeeeeet. I wish I knew more about how the <code>@fork</code> decorator worked, and it could be useful to dig into the <a href="http://doc.sagemath.org/pdf/en/reference/parallel/parallel.pdf">parallel functionality in sage</a>, but for now I’m very happy with what I’ve got.</p></body>
+<p>Each of these has seemed to work for trivial examples, but I haven’t been able to get this to work with rank calculations like the example above.</p>
+<p>Does anybody have any suggestions that might work for me?</p>
+<p>My goal is to print details about an elliptic curve to a file, and if it can’t compute the rank quickly enough to write something like “difficult to calculate” and move on to printing the rest of the information.</p></body>
 </html>

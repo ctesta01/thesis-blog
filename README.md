@@ -1,9 +1,15 @@
 
 
-# thesis-blog 🍵
-- [2016-12-14 First Post](https://ctesta01.github.io/thesis-blog/html/2016-12-14%20notes.html)
-- [2016-12-14 Emoji-Math](https://ctesta01.github.io/thesis-blog/html/2016-12-14%20emoji-math.html)
-- [2016-12-15 QQ (sqrt 5)](https://ctesta01.github.io/thesis-blog/html/2016-12-15%20notes.html)
-- [2016-12-26 Limiting Execution Time in SageMath](https://ctesta01.github.io/thesis-blog/html/2016-12-25%20notes.html)
-- [2016-12-27 Loading Code from GitHub](https://ctesta01.github.io/thesis-blog/html/2016-12-27%20loading%20remote%20code.html)
+# Elliptic Curves are Neat
 
+I have a couple projects that I've been working on recently. 
+
+- [Spherically Projecting Elliptic Curves]()
+- [Subgroup Structure in $\mathbb F_p$]()
+- [Geometrically Understanding the $a$-invariants]()
+
+<center>
+<iframe src='https://gfycat.com/ifr/TediousMajorHawk' frameborder='0' scrolling='no' width='640' height='349' allowfullscreen></iframe>
+</center>
+
+![A spherical projection of Elliptic Curve 37a1](https://fat.gfycat.com/TediousMajorHawk.gif)
