@@ -44,9 +44,9 @@ take a look at some of the first multiples of the generator for `E = EllipticCur
 I think it's really interesting how, for a lack of more technical terms, the points look like
 ants on a log. Why should they tend to be this way? It's an interesting phenomena to me.
 
-![100 Spherically Projected Generated Points on 61a1](https://github.com/ctesta01/thesis-blog/blob/master/images/61a1%20spherical%20points.gif?raw=true)
+![100 Spherically Projected Generated Points on 61a1](https://github.com/ctesta01/thesis-blog/blob/master/images/61a1%20100%20spherical%20points.gif?raw=true)
 
-![100 Generated Points on 61a1](https://github.com/ctesta01/thesis-blog/blob/master/images/61a1%20generated%20points.png?raw=true)
+![100 Generated Points on 61a1](https://github.com/ctesta01/thesis-blog/blob/master/images/61a1%20100%20generated%20points.png?raw=true)
 
 
 ### The first $\pm 160$ multiples of the generator of $E_{61a1}$
