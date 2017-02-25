@@ -1,6 +1,6 @@
 
 
-# [Elliptic Curves are Neat](https://ctesta01.github.io/thesis-blog/)
+# [Elliptic Curves are Neat 🍵](https://ctesta01.github.io/thesis-blog/)
 
 This is the github repository for my [thesis website](https://ctesta01.github.io/thesis-blog/).
 
