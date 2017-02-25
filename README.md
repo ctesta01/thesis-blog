@@ -11,4 +11,4 @@ playing with elliptic curves. Here are a couple projects that I've been working 
 
 <p> </p>
 
-![A spherical projection of Elliptic Curve 37a1](https://github.com/ctesta01/thesis-blog/blob/master/images/Spherical%2037a1%20Spinning.gif?raw=true)
+![A spherical projection of Elliptic Curve 37a1](https://github.com/ctesta01/thesis-blog/blob/master/images/37a1%20Spherical%20Points.gif?raw=true)
