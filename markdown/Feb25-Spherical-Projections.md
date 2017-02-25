@@ -5,4 +5,4 @@ and that means that all its points (except for the point at infinity $\mathcal O
 
 This yields traditional pictures of elliptic curves, like the following one for curve 496a1.
 
-![]()
+![A thick plot of 496a1 made in Sage](https://github.com/ctesta01/thesis-blog/blob/master/images/496a1.png?raw=true)
