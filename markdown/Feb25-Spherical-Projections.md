@@ -59,6 +59,7 @@ to each other. I'm not sure.
 ![160 Generated Points](https://github.com/ctesta01/thesis-blog/blob/master/images/61a1%20160%20Generated%20Points%20Affine.png?raw=true)
 
 
+### Flattening Unit Spherical Projections
 While I really enjoy these three dimensional plots, they are a little cumbersome to work with. A couple methods I've thought of for reducing the difficulty of investigation are different kinds of flattenings.
 
 One idea is to take a larger sphere, the unit sphere centered at the origin, to only project onto the top of that, and then squash this upper hemisphere. This is equivalent to taking the projective Weierstrauss equation
@@ -68,3 +69,5 @@ Here I am showing off the parameter space, varying each of the $a$ invariants on
 and each of the different possible flattenings of the sphere is shown. For flatting $z$, as if
 we were looking above and could not perceive depth, the picture is red. For flattening $y$, as
 if we're looking onto it from the $y$ axis, the picture is blue. Similarly, for $x$ it is green.
+
+![Three Different Flattenings of the Spherical Projection while varying in parameter space](https://github.com/ctesta01/thesis-blog/blob/master/images/Three%20Different%20Spherical%20Flattenings.gif?raw=true)
