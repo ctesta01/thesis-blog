@@ -85,5 +85,5 @@ Elliptic Curves are of significance primarily to number theorists, and have had 
 ## Where To From Here?
 
 At the Second International Congress in 1900 the incredible mathematician [David Hilbert](https://en.wikipedia.org/wiki/David_Hilbert) presented 10 of [23 problems](http://mathworld.wolfram.com/HilbertsProblems.html) that were then unsolved. The tenth of these was to find
-a general algorithm deciding the solvability of an arbitrary Diophantine equation. [Matiyasevich's Theorem] from 1970 yielded the discovery that no such algorithm can exist. This certainly makes finding and describing the complete solution set of a Diophantine problem more difficult. Progress in Algebraic-Geometry and the proof of Fermat's Last Theorem make Diophantine Equations an exciting subject, and the rational points on elliptic curves
-are one of many mysterious behaviors to explore. 
+a general algorithm deciding the solvability of an arbitrary Diophantine equation. Matiyasevich's Theorem from 1970 yielded the discovery that no such algorithm can exist. This certainly makes finding and describing the complete solution set of a Diophantine problem more difficult. Progress in Algebraic-Geometry and the proof of Fermat's Last Theorem make Diophantine Equations an exciting subject, and the rational points on elliptic curves
+are one of many mysterious behaviors to explore.
