@@ -1,6 +1,6 @@
 
 
-# Elliptic Curves are Neat [🍵](https://ctesta01.github.io/thesis-blog/)
+# Elliptic Curves are Neat [🍵](https://ctesta01.github.io/thesis-blog/html/README.html)
 
 I'm writing an undergraduate thesis on elliptic curves. I do a lot of exploring, plotting, and
 playing with elliptic curves. Here are a couple projects that I've been working on recently.
